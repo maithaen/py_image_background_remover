@@ -1,11 +1,15 @@
 import argparse
 import os
+from colorama import Fore, Style, init  # Import colorama
+
+# Initialize colorama
+init()
 
 # Set environment variable for MPS fallback to CPU
 os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = '1'
 
 # Import utilities from our modules
-from utils.environment import ensure_venv, BLUE, ENDC
+from utils.environment import ensure_venv
 from utils.image_processing import remove_bg_single, process_directory
 
 
@@ -24,7 +28,7 @@ def main():
     # If no input is provided, use the current directory
     if not args.input:
         args.input = os.getcwd()
-        print(f"{BLUE}No input specified, using current directory: {args.input}{ENDC}")
+        print(f"{Fore.BLUE}No input specified, using current directory: {args.input}{Style.RESET_ALL}")
 
     # Set default output directory if not specified
     if not args.output:
@@ -38,11 +42,11 @@ def main():
 
     # Process directory or single image
     if os.path.isdir(args.input) and not args.url:
-        print(f"{BLUE}Processing directory: {args.input}{ENDC}")
-        print(f"{BLUE}Output directory: {args.output}{ENDC}")
+        print(f"{Fore.BLUE}Processing directory: {args.input}{Style.RESET_ALL}")
+        print(f"{Fore.BLUE}Output directory: {args.output}{Style.RESET_ALL}")
         process_directory(args.input, args.output)
     else:
-        print(f"{BLUE}Output path: {args.output}{ENDC}")
+        print(f"{Fore.BLUE}Output path: {args.output}{Style.RESET_ALL}")
         remove_bg_single(args.input, args.output, args.url)
 
 
