@@ -1,0 +1,29 @@
+[flake8]
+max-line-length = 129
+extend-ignore =
+    # E203: Whitespace before ':'
+    E203,
+    # W503: Line break before binary operator
+    W503,
+    # E402: Module level import not at top of file
+    E402
+
+exclude =
+    .git,
+    __pycache__,
+    venv/,
+    .venv/,
+    build/,
+    dist/,
+    *.egg-info/
+
+filename = *.py
+
+# Enable additional checks
+enable-extensions = D,G,B,N,M
+
+# McCabe complexity checker
+max-complexity = 10
+
+# Docstring checking
+docstring-convention = google

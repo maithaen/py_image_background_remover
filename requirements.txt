@@ -1,0 +1,6 @@
+torch==2.6.0+cu126
+torchaudio==2.6.0+cu126
+torchvision==0.21.0+cu126
+transformers==4.49.0
+kornia==0.8.0
+timm==1.0.15
